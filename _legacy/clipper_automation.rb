@@ -5,7 +5,7 @@ require 'selenium-webdriver'
 require 'securerandom'
 
 puts "Do you want to see the browser window? (y/n)"
-headless_mode = gets.chomp.downcase == 'y'
+headless_mode = gets.chomp.downcase == 'n'
 
 Capybara.register_driver :selenium do |app|
   options = Selenium::WebDriver::Chrome::Options.new
