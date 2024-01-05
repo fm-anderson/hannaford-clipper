@@ -4,12 +4,22 @@ require 'capybara/dsl'
 require 'selenium-webdriver'
 require 'securerandom'
 
+puts "Do you want to see the browser window? (y/n)"
+headless_mode = gets.chomp.downcase == 'y'
+
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--window-size=1440,900')
+  options.add_argument('--headless') if headless_mode
+  options.add_argument('--disable-gpu') if headless_mode
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
-Capybara.default_driver = :selenium
+Capybara.default_max_wait_time = 5
+Capybara.default_driver = headless_mode ? :selenium_headless : :selenium_chrome
 Capybara.run_server = false
+
 include Capybara::DSL
 
 def random_sleep(min, max)
