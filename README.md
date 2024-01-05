@@ -29,13 +29,13 @@ Before you can run this script, you'll need to have the following software and a
 1. Clone the repository to your local machine:
 
    ```sh
-   git clone https://github.com/yourusername/hannaford-coupons-automation.git
+   git clone https://github.com/fm-anderson/hannaford-clipper.git
    ```
 
 2. Navigate to the project directory
 
    ```sh
-   cd hannaford-coupons-automation
+   cd hannaford-clipper
    ```
 
 3. Create a `.env` file in the project directory and add your Hannaford login credentials as environment variables:
@@ -56,10 +56,10 @@ Before you can run this script, you'll need to have the following software and a
 To run the script, execute the following command in the project directory:
 
 ```sh
-ruby clipper_automation.rb
+ruby clipper.rb
 ```
 
-The script will open a Chrome browser, log in to your Hannaford account, close any promotional popup (if it exists), load all available coupons, and clip them. After completing the process, the browser will be closed automatically.
+Depending on your choice, the script will either open a Chrome browser window or run in a headless mode. It logs into your Hannaford account, closes any promotional popups if they appear, loads all available coupons, and adds them to your account. Upon completion of the process, the script will automatically close the browser session.
 
 ## Troubleshooting
 
