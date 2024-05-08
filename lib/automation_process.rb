@@ -9,9 +9,10 @@ module AutomationProcess
 
     if page.has_link?('sign in')
       click_link('sign in')
-      fill_in('userNameLogin', with: ENV['HANNAFORD_EMAIL'])
-      fill_in('passwordLogin', with: ENV['HANNAFORD_PASSWORD'])
-      find('div#loginCred button.btn-primary').click
+      page.has_css?('div#loginCred', visible: true, wait: 10)
+      fill_in('userNameLogin', with: ENV['HANNAFORD_EMAIL'], wait: 4)
+      fill_in('passwordLogin', with: ENV['HANNAFORD_PASSWORD'], wait: 4)
+      find('div#loginCred button.btn-primary', wait: 4).click
       Utils.random_sleep(3, 7)
     end
   
